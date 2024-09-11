@@ -12,7 +12,7 @@ class CipherMaster:
                     shifted_letter = char
                 else:
                     shifted_letter_position = self.alphabet.index(char) + shift
-                    if shifted_letter_position % len(self.alphabet) > 0:
+                    if shifted_letter_position > (len(self.alphabet) - 1):
                         shifted_letter_position = shifted_letter_position % len(self.alphabet)
                     shifted_letter = self.alphabet[shifted_letter_position]
                 print('char', char, 'shifted_letter', shifted_letter)    
@@ -30,21 +30,26 @@ class CipherMaster:
                 if char in [',', '.', '!', ':', ';', '"', '(', ')', '—']:
                     original_letter = char
                 else:
-                    
-                    original_letter_position = self.alphabet.index(char) + shift
+                    original_letter_position = self.alphabet.index(char) - shift
+                    if original_letter_position < 0:
+                        original_letter_position = len(self.alphabet) + original_letter_position
+                    elif original_letter_position > (len(self.alphabet) - 1):
+                        original_letter_position = original_letter_position % len(self.alphabet)    
                     original_letter = self.alphabet[original_letter_position]
-                    #print('char', char, 'original_letter', original_letter)
+                    print('char', char, 'original_letter', original_letter)
                 original_word += original_letter
             original_text.append(original_word)
         return ' '.join(original_text)
 
 
 cipher_master = CipherMaster()
-print(cipher_master.cipher(
-    original_text='Однажды ревьюер принял проект с первого раза, с тех пор я его боюсь',
+""" print(cipher_master.cipher(
+    original_text='Пришло ревью в шифрованном виде. Кажется, нас расскрыли!',
     shift=2
-))
+)) """
 print(cipher_master.decipher(
     cipher_text='Олебэи яфвнэ мроплж сэжи — э пэй рдв злййвкпш лп нвящывнэ',
     shift=-3
 ))
+
+#print('сткънр тждюа д ъкцтрдвппро дкёж. мвижфуб, пву твуумтэнк!' == 'сткънр тждюа д ъкцтрдвппро дкёж. мвижфуб, пву твуумтэнк!')
