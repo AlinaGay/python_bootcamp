@@ -11,7 +11,7 @@ class Customer:
     def set_discount(self, new_discont):
         if new_discont > 80:
             self.__discount = 80
-        else:    
+        else:
             self.__discount = new_discont
 
 

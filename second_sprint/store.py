@@ -7,7 +7,7 @@ class Store:
         self.address = address
 
     def is_open(self, date):
-        # Метод is_open() в родительском классе всегда возвращает False, 
+        # Метод is_open() в родительском классе всегда возвращает False,
         # это "код-заглушка", метод, предназначенный для переопределения
         # в дочерних классах.
         return False
@@ -17,7 +17,7 @@ class Store:
         date_object = datetime.strptime(date_str, '%d.%m.%Y')
         is_open = self.is_open(date_object)
         # Передайте в метод is_open() объект даты date_object и определите,
-        # работает ли магазин в указанную дату. 
+        # работает ли магазин в указанную дату.
         # В зависимости от результата будет выбрано значение
         # для переменной info.
         if is_open:
